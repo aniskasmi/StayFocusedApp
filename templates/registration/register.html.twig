@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Inscription' %}
+
+{% block body %}
+    <style>body {
+            background-color: #FDFAF0 !important;
+        }</style>
+    <div class="d-flex flex-column flex-column-fluid flex-lg-row">
+        <div class="d-flex flex-center w-lg-50 pt-15 pt-lg-0 px-10">
+            <div class="d-flex flex-center flex-lg-start flex-column">
+                <a href="#" class="mb-7">
+                    <img alt="Logo" src="{{ asset('media/logos/logo-black.svg') }}"/>
+                </a>
+                <h2 class="text-black-50 fw-normal m-0">Plongez dans un océan de possibilités</h2>
+            </div>
+        </div>
+        <div class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
+            <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+                <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
+                    <div class="form w-100">
+                        <div class="text-center mb-11">
+                            <h1 class="text-dark fw-bolder mb-3">Inscription</h1>
+                        </div>
+                        <div class="row g-3 mb-9">
+                            <div class="col-md-6">
+                                <a href="#"
+                                   class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                    <img alt="Logo" src="{{ asset('media/svg/brand-logos/google-icon.svg') }}"
+                                         class="h-15px me-3"/>Connexion Google</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#"
+                                   class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                    <img alt="Logo" src="{{ asset('media/svg/brand-logos/apple-black.svg') }}"
+                                         class="theme-light-show h-15px me-3"/>
+                                    <img alt="Logo" src="{{ asset('media/svg/brand-logos/apple-black-dark.svg') }}"
+                                         class="theme-dark-show h-15px me-3"/>Connexion Apple</a>
+                            </div>
+                        </div>
+                        <div class="separator separator-content my-14">
+                            <span class="w-125px text-gray-500 fw-semibold fs-7">par email</span>
+                        </div>
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }} d-flex align-items-center p-5">
+                                    <div class="d-flex flex-column">
+                                        <span>{{ message }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
+                        {% if errors | length > 0 %}
+                            {% for error in errors %}
+                                <div class="alert alert-danger d-flex align-items-center p-5">
+                                    <div class="d-flex flex-column">
+                                        <span>{{ error.message }}</span>
+                                    </div>
+                                </div>
+                                {% if not loop.last %}
+                                    <br/>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                {{ form_row(form.firstname) }}
+                            </div>
+                            <div class="col-12 col-md-6">
+                                {{ form_row(form.lastname) }}
+                            </div>
+                        </div>
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.plainPassword.first) }}
+                        <div class="fv-row mb-10" data-kt-password-meter="true">
+                            <div class="text-muted" data-kt-translate="sign-up-hint">Utilisez 8 caractères ou plus avec
+                                une combinaison de lettres, de chiffres et de symboles.
+                            </div>
+                        </div>
+                        {{ form_row(form.plainPassword.second) }}
+                        <div class="d-grid mb-10">
+                            <button type="submit" class="btn btn-warning">
+                                <span class="indicator-label">S'inscrire</span>
+                            </button>
+                        </div>
+                        <p>
+                            <small class="text-muted">Vos données personnelles (email et nom d'utilisateur) ne sont
+                                utilisées qu'à des fins d'authentification et ne sont pas partagées avec des tiers (<a
+                                        href="https://www.stayfocusedandco.fr/politique-de-confidentialite"
+                                        class="text-warning">En savoir plus</a>).</small>
+                        </p>
+                        {{ form_end(form) }}
+                        <div class="text-gray-500 text-center fw-semibold fs-6">Déjà membre ?
+                            <a href="{{ path('auth_login') }}" class="link-warning">Se connecter</a></div>
+                    </div>
+                </div>
+                <div class="d-flex flex-stack px-lg-10">
+                    <div class="d-flex fw-semibold text-warning fs-base gap-5">
+                        <a href="https://www.stayfocusedandco.fr/politique-de-confidentialite" class="text-warning" target="_blank">Confidentialité</a>
+                        <a href="https://www.stayfocusedandco.fr/cgs" target="_blank" class="text-warning">CGS</a>
+                        <a href="https://www.stayfocusedandco.fr/mentions-legales" target="_blank" class="text-warning">Mentions
+                            Légales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

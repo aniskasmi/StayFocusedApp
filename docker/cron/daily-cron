@@ -1,0 +1,1 @@
+0 0 * * * root php /var/www/bin/console app:reset-lock-project >> /var/log/cron.log 2>&1

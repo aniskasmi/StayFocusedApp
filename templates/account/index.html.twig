@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %} {% block title 'Mon compte' %} {% block body %} <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+    <div class="d-flex flex-column flex-column-fluid">
+        <div id="kt_app_toolbar" class="app-toolbar mt-lg-0 mt-lg-n5 pt-4 pt-lg-0 pb-4 pb-lg-8">
+            <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack flex-wrap">
+                <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+                    <div class="page-title d-flex flex-column justify-content-center me-3">
+                        <h1 class="page-heading d-flex title-custom fw-bolder fs-2hx flex-column justify-content-center my-0"> Mon Compte</h1>
+                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                            <li class="breadcrumb-item text-gray-700">
+                                <a href="{{ path('home') }}" class="text-gray-700 text-hover-primary">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <i class="ki-duotone ki-right fs-7 text-gray-700"></i>
+                            </li>
+                            <li class="breadcrumb-item text-gray-700">Compte</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="kt_app_content" class="app-content flex-column-fluid">
+            <div id="kt_app_content_container" class="app-container container-xxl">
+                <div class="card mb-5 mb-xl-10">
+                    <div class="card-body pt-9 pb-0">
+                        {% include 'account/_nav.html.twig' %}
+                    </div>
+                </div>
+                <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+                    <div class="card-header cursor-pointer">
+
+                        <div class="card-title m-0">
+                            <h3 class="fw-bold m-0">Informations</h3>
+                        </div>
+
+
+                        <a href="{{ path('account_edit') }}" class="btn btn-sm btn-primary align-self-center">Modifier</a>
+
+                    </div>
+                    <div class="card-body p-9">
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-semibold text-muted">Nom</label>
+                            <div class="col-lg-8">
+                                <span class="fw-bold fs-6 text-gray-800">{{ app.user.identity }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-semibold text-muted">Email <span class="ms-1" data-bs-toggle="tooltip" title="Phone number must be active">
+                              <i class="ki-duotone ki-information fs-7">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                              </i>
+                            </span>
+                            </label>
+                            <div class="col-lg-8 d-flex align-items-center">
+                                <span class="fw-bold fs-6 text-gray-800 me-2">{{ app.user.email }}</span>
+                                {% if app.user.isVerified %}
+                                    <span class="badge badge-success">Vérifié</span>
+                                {% else %}
+                                    <span class="badge badge-danger">Non vérifié</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-semibold text-muted">Société</label>
+                            <div class="col-lg-8 fv-row">
+                                <span class="fw-semibold text-gray-800 fs-6"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-semibold text-muted">Téléphone <span class="ms-1" data-bs-toggle="tooltip" title="Phone number must be active">
+                              <i class="ki-duotone ki-information fs-7">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                              </i>
+                            </span>
+                            </label>
+                            <div class="col-lg-8 d-flex align-items-center">
+                                <span class="fw-bold fs-6 text-gray-800 me-2">044 3276 454 935</span>
+                                <span class="badge badge-success">Verified</span>
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-semibold text-muted">Pays <span class="ms-1" data-bs-toggle="tooltip" title="Country of origination">
+                              <i class="ki-duotone ki-information fs-7">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                              </i>
+                            </span>
+                            </label>
+                            <div class="col-lg-8">
+                                <span class="fw-bold fs-6 text-gray-800">Germany</span>
+                            </div>
+                        </div>
+                        <div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+                            <i class="ki-duotone ki-information fs-2tx text-warning me-4">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                            </i>
+                            <div class="d-flex flex-stack flex-grow-1">
+                                <div class="fw-semibold">
+                                    <h4 class="text-gray-900 fw-bold">We need your attention!</h4>
+                                    <div class="fs-6 text-gray-700">Your payment was declined. To start using tools, please <a class="fw-bold" href="../../demo47/dist/account/billing.html">Add Payment Method</a>. </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %}

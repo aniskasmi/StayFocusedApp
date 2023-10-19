@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Parrainage' %}
+
+{% block body %}
+<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+    <div class="d-flex flex-column flex-column-fluid">
+        <div id="kt_app_toolbar" class="app-toolbar mt-lg-0 mt-lg-n5 pt-4 pt-lg-0 pb-4 pb-lg-8">
+            <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack flex-wrap">
+                <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+                    <div class="page-title d-flex flex-column justify-content-center me-3">
+                        <h1 class="page-heading d-flex title-custom fw-bolder fs-2hx flex-column justify-content-center my-0"> Programme Parrainage</h1>
+                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
+                            <li class="breadcrumb-item text-gray-700">
+                                <a href="{{ path('home') }}" class="text-gray-700 text-hover-primary">Accueil</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <i class="ki-duotone ki-right fs-7 text-gray-700"></i>
+                            </li>
+                            <li class="breadcrumb-item text-gray-700">Parrainage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="kt_app_content" class="app-content flex-column-fluid">
+            <div id="kt_app_content_container" class="app-container container-xxl">
+                <div class="card mb-5 mb-xl-10">
+                    <div class="card-body pt-9 pb-0">
+                        {% include 'account/_nav.html.twig' %}
+                    </div>
+                </div>
+                <div class="card mb-5 mb-xl-10">
+                    <div class="card-body py-10">
+                        <h2 class="mb-9">Programme de Parrainage</h2>
+                        <div class="row mb-10">
+                            <div class="col-xl-6 mb-15 mb-xl-0 pe-5">
+                                <h4 class="mb-0">Comment utiliser le Programme de Parrainage</h4>
+                                <p class="fs-6 fw-semibold text-gray-600 py-4 m-0">
+                                    Utilisez votre code ou lien pour attirer de nouveaux utilisateurs. Pour chaque nouvel utilisateur que vous parrainez, vous recevrez des récompenses.
+                                </p>
+                                <a href="" class="btn btn-light btn-active-light-primary fw-bold">K210SW1</a>
+                            </div>
+                            <div class="col-xl-6">
+                                <h4 class="text-gray-800 mb-0">Votre lien de parrainage</h4>
+                                <p class="fs-6 fw-semibold text-gray-600 py-4 m-0">
+                                    Partager ce lien : l'inscription de votre filleul doit se faire à travers ce lien ou votre code de parrainage.
+                                </p>
+                                <div class="d-flex">
+                                    <input id="kt_referral_link_input" type="text" class="form-control form-control-solid me-3 flex-grow-1" name="search" value="https://stayfocusedandco.fr/refer/?refid=345re66787k8" />
+                                    <button id="kt_referral_program_link_copy_btn" class="btn btn-light btn-active-light-primary fw-bold flex-shrink-0" data-clipboard-target="#kt_referral_link_input">Copier le lien</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card card-dashed flex-center min-w-175px my-3 p-6">
+                                    <span class="fs-4 fw-semibold text-info pb-1 px-2">Gains nets</span>
+                                    <span class="fs-lg-2tx fw-bold d-flex justify-content-center">$<span data-kt-countup="true" data-kt-countup-value="63,240.00">0</span></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-dashed flex-center min-w-175px my-3 p-6">
+                                    <span class="fs-4 fw-semibold text-success pb-1 px-2">Solde</span>
+                                    <span class="fs-lg-2tx fw-bold d-flex justify-content-center">$<span data-kt-countup="true" data-kt-countup-value="8,530.00">0</span></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-dashed flex-center min-w-175px my-3 p-6">
+                                    <span class="fs-4 fw-semibold text-danger pb-1 px-2">Panier Moyen</span>
+                                    <span class="fs-lg-2tx fw-bold d-flex justify-content-center">$<span data-kt-countup="true" data-kt-countup-value="2,600">0</span></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card card-dashed flex-center min-w-175px my-3 p-6">
+                                    <span class="fs-4 fw-semibold text-primary pb-1 px-2">Inscriptions par parrainage</span>
+                                    <span class="fs-lg-2tx fw-bold d-flex justify-content-center"><span data-kt-countup="true" data-kt-countup-value="783">0</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="fs-5 fw-semibold text-gray-600 py-6"></p>
+                        <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed p-6">
+                            <i class="ki-duotone ki-bank fs-2tx text-primary me-4">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                            <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                                <div class="mb-3 mb-md-0 fw-semibold">
+                                    <h4 class="text-gray-900 fw-bold">Retirez votre argent sur un compte bancaire</h4>
+                                    <div class="fs-6 text-gray-700 pe-7">Retirez de l'argent de manière sécurisée sur votre compte bancaire. La commission est de 25 $ par transaction sous 50 000 $</div>
+                                </div>
+                                <a href="https://stayfocusedandco.fr/retrait" class="btn btn-primary px-6 align-self-center text-nowrap">Retirer de l'argent</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header card-header-stretch">
+                        <div class="card-title">
+                            <h3>Utilisateurs Parrainés</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-row-bordered align-middle gy-6">
+                                <thead class="border-bottom border-gray-200 fs-6 fw-bold bg-lighten">
+                                <tr>
+                                    <th class="min-w-125px ps-9">ID</th>
+                                    <th class="min-w-125px px-0">Nom</th>
+                                    <th class="min-w-125px">Date</th>
+                                    <th class="min-w-125px">Bonus</th>
+                                    <th class="min-w-125px ps-0">Gain</th>
+                                </tr>
+                                </thead>
+                                <tbody class="fs-6 fw-semibold text-gray-600">
+                                <!--
+                                <tr>
+                                    <td class="ps-9">678935899</td>
+                                    <td class="ps-0">
+                                        <a href="" class="text-gray-600 text-hover-primary">Marcus Harris</a>
+                                    </td>
+                                    <td>Nov 24, 2020</td>
+                                    <td>26%</td>
+                                    <td class="text-success">$1,200.00</td>
+                                </tr>
+                                -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

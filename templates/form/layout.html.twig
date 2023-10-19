@@ -1,0 +1,39 @@
+{% use "bootstrap_4_layout.html.twig" %}
+
+{% block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <div class="alert alert-danger d-flex align-items-center p-5">
+            <div class="d-flex flex-column">
+                {%- for error in errors -%}
+                    <span>{{ error.message }}</span>
+                {%- endfor -%}
+            </div>
+        </div>
+    {%- endif %}
+{%- endblock form_errors %}
+
+
+{% block form_row -%}
+    <div class="fv-row mb-4">
+        {{- form_errors(form) -}}
+        {{- form_widget(form, {
+            'attr': {
+                'class': 'form-control bg-transparent',
+                'placeholder': label|default('')
+            }
+        }) -}}
+    </div>
+{%- endblock form_row %}
+
+
+
+{% block form_widget_simple -%}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form-control bg-transparent')|trim}) %}
+    {{ parent() }}
+{%- endblock form_widget_simple %}
+
+
+{% block password_widget -%}
+    <input type="password" {{ block('widget_attributes') }} class="form-control bg-transparent"
+           placeholder="Mot de passe"/>
+{%- endblock password_widget %}

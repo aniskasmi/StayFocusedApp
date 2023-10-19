@@ -1,0 +1,67 @@
+<div class="d-flex flex-wrap flex-sm-nowrap">
+    <div class="flex-grow-1">
+        <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center mb-2">
+                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">{{ app.user.identity }}</a>
+                    {% if app.user.isVerified %}
+                        <i class="ki-duotone ki-verify fs-1 text-primary">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i> {% else %} <i class="ki-duotone ki-verify fs-1 text-danger">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                    </i> {% endif %}
+                </div>
+                <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                        <i class="ki-duotone ki-profile-circle fs-4 me-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                            <span class="path3"></span>
+                        </i>Membre </a>
+                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                        <i class="ki-duotone ki-geolocation fs-4 me-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>SF, Bay Area </a>
+                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                        <i class="ki-duotone ki-sms fs-4">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>{{ app.user.email }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold">
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_index' ? 'active' }}" href="{{ path('account_index') }}">Mon Compte</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_edit' ? 'active' }}" href="{{ path('account_edit') }}">Paramètres</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_referral' ? 'active' }}" href="{{ path('account_referral') }}">Parrainage</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/activity.html">Activity</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/billing.html">Billing</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/statements.html">Statements</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/referrals.html">Referrals</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/api-keys.html">API Keys</a>
+    </li>
+    <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/logs.html">Logs</a>
+    </li>
+</ul>
