@@ -25,6 +25,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    use StripeEntity;
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="IDENTITY")

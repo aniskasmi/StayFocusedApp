@@ -44,24 +44,9 @@
         <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_edit' ? 'active' }}" href="{{ path('account_edit') }}">Paramètres</a>
     </li>
     <li class="nav-item mt-2">
+        <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_billing_index' ? 'active' }}" href="{{ path('account_billing_index') }}">Facturation</a>
+    </li>
+    <li class="nav-item mt-2">
         <a class="nav-link text-active-primary ms-0 me-10 py-5 {{ app.request.get('_route') == 'account_referral' ? 'active' }}" href="{{ path('account_referral') }}">Parrainage</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/activity.html">Activity</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/billing.html">Billing</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/statements.html">Statements</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/referrals.html">Referrals</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/api-keys.html">API Keys</a>
-    </li>
-    <li class="nav-item mt-2">
-        <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo47/dist/account/logs.html">Logs</a>
     </li>
 </ul>
