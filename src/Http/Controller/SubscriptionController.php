@@ -2,20 +2,26 @@
 
 namespace App\Http\Controller;
 
+use App\Domain\Auth\Event\TestEvent;
 use App\Domain\Billing\Entity\Plan;
+use App\Domain\Billing\Event\BillingSubscriptionEvent;
 use App\Domain\Billing\Repository\PlanRepository;
 use App\Http\Controller\AbstractController;
 use App\Http\Form\AccountEditType;
 use App\Http\Form\RegistrationFormType;
+use App\Infrastructure\Payment\Event\PaymentEvent;
 use App\Infrastructure\Payment\Stripe\StripeApi;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-class BillingController extends AbstractController
+class SubscriptionController extends AbstractController
 {
     public function __construct(private readonly StripeApi $api)
     {
@@ -45,10 +51,20 @@ class BillingController extends AbstractController
         return $this->redirect($this->api->getBillingUrl($user, $redirectUrl));
     }
     
+    #[Route('/subscription', name: 'subscription_index')]
+    public function index(PlanRepository $pr, EventDispatcherInterface $dispatcher): Response
+    {
+        $dispatcher->dispatch(new TestEvent('test event'));
+    
+        return $this->render('subscription/index.html.twig', [
+            'plans' => $pr->findAll()
+        ]);
+    }
+    
     /**
-     * @Route("/billing/stripe/checkout", name="billing_stripe", methods={"POST"})
+     * @Route("/subscription/stripe/checkout", name="subscription_stripe", methods={"POST"})
      */
-    public function stripe(
+    public function subscriptionStripe(
         EntityManagerInterface $em,
         Request $request,
         UrlGeneratorInterface $urlGenerator,
@@ -63,7 +79,7 @@ class BillingController extends AbstractController
         $isSubscription = '1' === $request->get('subscription');
         $url = $urlGenerator->generate('account_index', [], UrlGeneratorInterface::ABSOLUTE_URL);
         try {
-            $api->createCustomer($this->getUser());
+            $this->api->createCustomer($this->getUser());
             $em->flush();
             
             return $this->json([

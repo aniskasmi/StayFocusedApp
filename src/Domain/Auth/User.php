@@ -2,6 +2,7 @@
 
 namespace App\Domain\Auth;
 
+use App\Domain\Billing\Entity\SubscriptionTrait;
 use App\Domain\Forum\Entity\ForumReaderUserInterface;
 use App\Domain\Notification\Entity\Notifiable;
 use App\Domain\Premium\Entity\PremiumTrait;
@@ -26,6 +27,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use StripeEntity;
+    use SubscriptionTrait;
     
     /**
      * @ORM\Id()
